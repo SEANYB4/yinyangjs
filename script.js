@@ -24,14 +24,16 @@ context.fill();
 
 // Draw little circles
 
-context.fillStyle = 'black';
-context.beginPath();
-context.arc((myCanvas.width/4)*3, myCanvas.height/4, 50, 0, 2*Math.PI);
-context.fill();
 
 context.beginPath();
-context.arc((myCanvas.width/4), (myCanvas.height/4)*3, 50, 0, 2*Math.PI);
+context.arc((myCanvas.width/4)*3, myCanvas.height/4, 50, 0, 2*Math.PI);
 context.stroke();
+
+
+context.fillStyle = 'black';
+context.beginPath();
+context.arc((myCanvas.width/4), (myCanvas.height/4)*3, 50, 0, 2*Math.PI);
+context.fill();
 
 // Draw curves
 
@@ -39,10 +41,35 @@ context.beginPath();
 context.moveTo(centerX, 0);
 context.quadraticCurveTo(50, 150, myCanvas.width/2, myCanvas.height/2);
 context.lineWidth = 3;
-context.stroke();
+context.clip();
+
+
+// left rectangle
+
+context.fillStyle = "black";
+context.fillRect(
+    0,
+    0,
+    250,
+    500
+);
+
+
+
 
 
 context.beginPath();
 context.moveTo(centerX, myCanvas.height/2);
 context.quadraticCurveTo(500, 360, myCanvas.width/2, myCanvas.height);
-context.stroke();
+context.clip();
+
+
+// right rectangle
+
+context.fillStyle = "black";
+context.fillRect(
+    centerX, 
+    0,
+    250,
+    500
+)
